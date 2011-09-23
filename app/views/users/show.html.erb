@@ -1,0 +1,16 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <%= render 'cheq_form' if signed_in?%>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <%= render 'shared/stats' %>
+    </td>
+  </tr>
+</table>

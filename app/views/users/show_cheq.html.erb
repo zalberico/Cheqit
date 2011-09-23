@@ -1,0 +1,25 @@
+<table summary="Information about cheqs">
+  <tr>
+    <td class="main">
+      <h1><%= @title %></h1>
+
+      <% unless @users.empty? %>
+	<u1 class="users" %>
+	  <%= render @users %>
+	</u1>
+	<%= will_paginate @users %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+      <%= render 'shared/stats' %>
+      <% unless @users.empty? %>
+        <% @users.each do |user| %>
+          <%= link_to gravatar_for(user, :size => 30), user %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+    

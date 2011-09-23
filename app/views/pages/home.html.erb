@@ -1,0 +1,10 @@
+<% if signed_in? %>
+  <%= render 'shared/user_info' %>
+  <%= render 'shared/stats' %>
+<% else %>
+  <h1>Cheqit Home Page</h1>
+  <p>
+    This is the Cheqit home page.
+  </p>
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>
