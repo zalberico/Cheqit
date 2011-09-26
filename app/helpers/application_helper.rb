@@ -5,7 +5,7 @@ module ApplicationHelper
     base_title = "cheq.it"
     separator = "-"
     if @title.nil?
-      base_title
+      "#{base_title} #{separator} rejection free!"
     else
       "#{base_title} #{separator} #{@title}"
     end
