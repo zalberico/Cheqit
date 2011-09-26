@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => :destroy
 
   def index
-    @title = "All users"
+    @title = "all users"
     @users = User.paginate(:page => params[:page])
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @title = "Sign up"
+    @title = "sign up"
   end
 
   def create
@@ -25,13 +25,13 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Cheqit!"
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = "sign up"
       render 'new'
     end
   end
 
   def edit
-    @title = "Edit user"
+    @title = "edit user"
   end
 
   def update
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated."
       redirect_to @user
     else
-      @title = "Edit user"
+      @title = "edit user"
       render 'edit'
     end
   end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def cheqeds
-    @title = "Cheqs"
+    @title = "cheqs"
     @user = User.find(params[:id])
     @users = @user.cheqers.paginate(:page => params[:page])
     render 'show_cheq'
