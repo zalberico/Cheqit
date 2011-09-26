@@ -8,9 +8,9 @@
       <%= render 'cheq_form' if signed_in?%>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
-      <%= render 'shared/stats' %>
+      <!--<strong>Name</strong> <%= @user.name %><br />-->
+      <!--<strong>URL</strong>  <%= link_to user_path(@user), @user %>-->
+      <%= render 'shared/stats' %> <!-- This is what shows the cheqs and number, but shouldn't probably be here.  It should be at the top of the page and this 'sidebar' section should deleted -->
     </td>
   </tr>
 </table>
