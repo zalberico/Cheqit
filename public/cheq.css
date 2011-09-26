@@ -1,0 +1,92 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: helvetica, arial, sans-serif;
+	width: 56em;
+	margin: 0 auto;
+}
+
+#header > h1 > a {
+	text-decoration: none;
+	font-size: 2em;
+	color: #0071bc;
+}
+
+#header > h1 > a > span {
+	font-weight: 100;
+	color: #39b54a;
+}
+
+#header > form, #header > ul {
+	float: right;
+	font-size: 2em;
+	margin-top: 1em;
+	list-style: none;
+}
+
+#header > ul > li {
+	float: left;
+}
+
+#header > form > input[type="text"], #header > form > input[type="password"] {
+	border: 2px solid #000;
+	font-size: .7em;
+	padding: .05em;
+	width: 8em;
+	float: left;
+	margin-left: 1em;
+	color: #aaa;
+}
+
+#header > form > input[type="text"]:focus, #header > form > input[type="password"]:focus {
+	color: #777;
+}
+
+#header > form > input[type="submit"] {
+	border: none;
+	background: none;
+	font-size: 1em;
+	float: left;
+	cursor: pointer;
+}
+
+#header > form > input[type="submit"], #header > ul > li > a {
+	display: block;
+	width: 4em;
+	text-decoration: none;
+	text-align: center;
+	color: #000;
+}
+
+#header > form > input[type="submit"]:hover, #header > ul > li > a:hover {
+	color: #777;
+}
+
+#content {
+	background: #e6e6e6;
+	border-radius: .6em;
+	-moz-border-radius: .6em;
+	-webkit-border-radius: .6em;
+	padding: 1em;
+	font-size: 1.5em;
+}
+
+#footer {
+	margin-top: 1em;
+	color: #999;
+	text-align: center;
+}
+
+#footer > a {
+	text-decoration: none;
+	color: #777;
+	margin: 0 .4em;
+}
+
+#footer > a:hover {
+	color: #333;
+}
+
