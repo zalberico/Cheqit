@@ -15,9 +15,14 @@ ActiveRecord::Schema.define(:version => 20110612213431) do
   create_table "relationships", :force => true do |t|
     t.integer  "cheqer_id"
     t.integer  "cheqed_id"
+    t.boolean  "match"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "relationships", ["cheqed_id"], :name => "index_relationships_on_cheqed_id"
+  add_index "relationships", ["cheqer_id", "cheqed_id"], :name => "index_relationships_on_cheqer_id_and_cheqed_id", :unique => true
+  add_index "relationships", ["cheqer_id"], :name => "index_relationships_on_cheqer_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -3,6 +3,7 @@ class CreateRelationships < ActiveRecord::Migration
     create_table :relationships do |t|
       t.integer :cheqer_id
       t.integer :cheqed_id
+      t.boolean :match
 
       t.timestamps
     end
