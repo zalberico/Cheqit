@@ -8,6 +8,7 @@ class RelationshipsController < ApplicationController
       format.html { redirect_to @user }
       format.js
     end
+    #Need code here to check for a match and update match value in table
   end
 
   def destroy
@@ -18,4 +19,5 @@ class RelationshipsController < ApplicationController
       format.js
     end
   end
+  #Need code here to set remove match value or set it to zero.
 end

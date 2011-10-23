@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
   end
 
 #--------------Matching Part-----------------
+=begin
   def match?(cheqed)
     (relationships.find_by_cheqed_id(cheqed)).match #valid syntax?
   end
@@ -80,7 +81,7 @@ class User < ActiveRecord::Base
     m = relationships.find_by_cheqed_id(cheqed)
     m.update_attributes(:match => false)
   end
-
+=end
   #------------------------------------------
 
   private
