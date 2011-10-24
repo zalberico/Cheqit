@@ -60,17 +60,21 @@ class User < ActiveRecord::Base
 
   def cheq!(cheqed)
     relationships.create!(:cheqed_id => cheqed.id)
+    #user.update_attributes(params[:relationships][:match] => true)
+    r = relationships.where(:cheqed_id => id)
+    t = r.where(:cheqer_id => cheqed.id)
+    #t.update_attributes(:match => true)
   end
 
   def uncheq!(cheqed)
     relationships.find_by_cheqed_id(cheqed).destroy
   end
 
-#--------------Matching Part-----------------
 =begin
-  def match?(cheqed)
-    (relationships.find_by_cheqed_id(cheqed)).match #valid syntax?
-  end
+#--------------Matching Part-----------------
+  #def match?(cheqed)
+   # (relationships.find_by_cheqed_id(cheqed)).match #valid syntax?
+  #end
 
   def match!(cheqed)
     m = relationships.find_by_cheqed_id(cheqed)
@@ -81,9 +85,8 @@ class User < ActiveRecord::Base
     m = relationships.find_by_cheqed_id(cheqed)
     m.update_attributes(:match => false)
   end
-=end
   #------------------------------------------
-
+=end
   private
 
     def encrypt_password

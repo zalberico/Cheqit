@@ -4,7 +4,7 @@
       <h1><%= @title %></h1>
 
       <% unless @users.empty? %>
-	     <u1 class="users" %>
+       <u1 class="users">
 	      <%= render @users %>
 	     </u1>
 	     <%= will_paginate @users %>

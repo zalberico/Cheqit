@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   def cheqeds
     @title = "cheqs"
     @user = User.find(params[:id])
-    @users = @user.cheqers.paginate(:page => params[:page])
+    @users = @user.cheqeds.paginate(:page => params[:page])
     render 'show_cheq'
   end
 
