@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
                                    :class_name => "Relationship",
                                    :dependent => :destroy
   has_many :cheqers, :through => :reverse_relationships, :source => :cheqer
+  has_many :matches, :through => :relationships #Added for matching
 
   email_regex = /\A[\w+\-.]+@rpi.edu/i
 
@@ -59,12 +60,33 @@ class User < ActiveRecord::Base
 
   def cheq!(cheqed)
     relationships.create!(:cheqed_id => cheqed.id)
+    #user.update_attributes(params[:relationships][:match] => true)
+    r = relationships.where(:cheqed_id => id)
+    t = r.where(:cheqer_id => cheqed.id)
+    #t.update_attributes(:match => true)
   end
 
   def uncheq!(cheqed)
     relationships.find_by_cheqed_id(cheqed).destroy
   end
 
+=begin
+#--------------Matching Part-----------------
+  #def match?(cheqed)
+   # (relationships.find_by_cheqed_id(cheqed)).match #valid syntax?
+  #end
+
+  def match!(cheqed)
+    m = relationships.find_by_cheqed_id(cheqed)
+    m.update_attributes(:match => true)
+  end
+
+  def unmatch!(cheqed)
+    m = relationships.find_by_cheqed_id(cheqed)
+    m.update_attributes(:match => false)
+  end
+  #------------------------------------------
+=end
   private
 
     def encrypt_password
