@@ -12,8 +12,6 @@ class RelationshipsController < ApplicationController
       format.html { redirect_to @user }
       format.js
     end
-    #if(@user.cheqed?(current_user))
-     # current_user.update_attributes(:match => true)
   end
 
   def destroy

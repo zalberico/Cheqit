@@ -59,11 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def cheq!(cheqed)
-    if(cheqed.cheqed?(User)) 
-      relationships.create!(:cheqed_id => cheqed.id, :match => true)
-    else
-      relationships.create!(:cheqed_id => cheqed.id)
-    end
+    relationships.create!(:cheqed_id => cheqed.id, :match => false)
   end
 
   def uncheq!(cheqed)
@@ -77,7 +73,7 @@ class User < ActiveRecord::Base
 
   def match!(cheqed)
     m = relationships.find_by_cheqed_id(cheqed)
-    if(m!=nil)
+    if( m!= nil)
       m.update_attributes(:match => true)
     end
   end
