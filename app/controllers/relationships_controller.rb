@@ -17,7 +17,9 @@ class RelationshipsController < ApplicationController
   def destroy
     @user = Relationship.find(params[:id]).cheqed
     current_user.uncheq!(@user)
-    @user.unmatch!(current_user)
+    if(@user.match?(current_user))
+      @user.unmatch!(current_user)
+    end
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
