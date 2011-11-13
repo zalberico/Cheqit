@@ -82,6 +82,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def unmatch!(cheqed)
+    m = relationships.find_by_cheqed_id(cheqed)
+    m.update_attributes(:match => false)
+  end
+
   private
 
     def encrypt_password
