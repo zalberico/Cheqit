@@ -70,17 +70,20 @@ class User < ActiveRecord::Base
     relationships.find_by_cheqed_id(cheqed).destroy
   end
 
-=begin
+
 #--------------Matching Part-----------------
-  #def match?(cheqed)
-   # (relationships.find_by_cheqed_id(cheqed)).match #valid syntax?
-  #end
+  def match?(cheqed)
+    relationships.find_by_cheqed_id(cheqed)
+  end
+
 
   def match!(cheqed)
     m = relationships.find_by_cheqed_id(cheqed)
-    m.update_attributes(:match => true)
+    if(m!=nil)
+      m.update_attributes(:match => true)
+    end
   end
-
+=begin
   def unmatch!(cheqed)
     m = relationships.find_by_cheqed_id(cheqed)
     m.update_attributes(:match => false)
