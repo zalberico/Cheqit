@@ -4,6 +4,13 @@
 		<li><%= link_to "cheqs", cheqeds_user_path(current_user) %></li>
 		<!--<li><%= link_to "settings", edit_user_path(current_user) %></li>-->
 		<li><%= link_to "log out", signout_path, :method => :delete %></li>
+		<li><% form_tag users_path, :method => 'get' do %>
+			<p>
+				<%= text_field_tag 'search', '', :size => 15%>
+				<%= submit_tag "Search", :name => nil %>
+			</p>
+			<% end %>
+		</li>
 	</ul>
 <% else %>
 	<%= form_for(:session, :url => sessions_path) do |f| %>

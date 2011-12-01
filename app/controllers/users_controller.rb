@@ -4,8 +4,12 @@ class UsersController < ApplicationController
   before_filter :admin_user,   :only => :destroy
 
   def index
-    @title = "all users"
-    @users = User.paginate(:page => params[:page])
+    if params[:search]
+      @users = User.paginate(:page => params[:page], :conditions => ['name LIKE ?', "%#{params[:search]}%"])
+    else
+      @title = "all users"
+      @users = User.paginate(:page => params[:page])
+    end
   end
 
   def show
