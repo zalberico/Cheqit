@@ -11,6 +11,7 @@
 #
 
 class User < ActiveRecord::Base
+  #Attributes associated with the User model (a model is like an object in Rails)
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
@@ -25,8 +26,10 @@ class User < ActiveRecord::Base
   has_many :cheqers, :through => :reverse_relationships, :source => :cheqer
   has_many :matches, :through => :relationships #Added for matching
 
+  #This regex is the basic test for having a rpi.edu email.
   email_regex = /\A[\w+\-.]+@rpi.edu/i
 
+  #This code validates the existance of the necessary categories for a user account.
   validates :name,  :presence => true,
                     :length   => { :maximum => 50 }
 
@@ -64,32 +67,27 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
 
+#Functions that handle cheqing
   def cheqed?(cheqed)
     relationships.find_by_cheqed_id(cheqed)
   end
 
   def cheq!(cheqed)
     relationships.create!(:cheqed_id => cheqed.id, :match => false)
-    #user.update_attributes(params[:relationships][:match] => true)
-    r = relationships.where(:cheqed_id => id)
-    t = r.where(:cheqer_id => cheqed.id)
-    #t.update_attributes(:match => true)
   end
 
   def uncheq!(cheqed)
     relationships.find_by_cheqed_id(cheqed).destroy
   end
 
-
 #--------------Matching Part-----------------
   def match?(cheqed)
     relationships.find_by_cheqed_id(cheqed)
   end
 
-
   def match!(cheqed)
     m = relationships.find_by_cheqed_id(cheqed)
-    if(m!=nil)
+    if( m!= nil)
       m.update_attributes(:match => true)
     end
   end
@@ -100,6 +98,7 @@ class User < ActiveRecord::Base
   end
   #------------------------------------------
 
+#Code that handles hasing and salting passwords so they're encrypted in the database.
   private
 
     def encrypt_password

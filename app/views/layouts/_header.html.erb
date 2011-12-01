@@ -4,15 +4,13 @@
 		<li><%= link_to "cheqs", cheqeds_user_path(current_user) %></li>
 		<!--<li><%= link_to "settings", edit_user_path(current_user) %></li>-->
 		<li><%= link_to "log out", signout_path, :method => :delete %></li>
-		<li>
-			<%= form_tag :controller => 'users', :action =>'search', :method => 'get' do %>
-				<%= text_field_tag :search, params[:search], :id => 'search_field' %>
+		<li><% form_tag users_path, :method => 'get' do %>
+			<p>
+				<%= text_field_tag 'search', '', :size => 15%>
 				<%= submit_tag "Search", :name => nil %>
-				<%= link_to_function "Clear", "$('search_field').clear()" %>
+			</p>
 			<% end %>
-			<!--<input size="10" name="query" type="text" />-->
 		</li>
-		<input size="2" type='submit' value='Search' />
 	</ul>
 <% else %>
 	<%= form_for(:session, :url => sessions_path) do |f| %>
