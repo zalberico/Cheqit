@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
   before_filter :authenticate
 
+#When relationships are created check to see if it makes a match
   def create
     @user = User.find(params[:relationship][:cheqed_id])
     current_user.cheq!(@user)
@@ -14,6 +15,7 @@ class RelationshipsController < ApplicationController
     end
   end
 
+#Destroy the relationship in the database and unmatch an associated relationships.
   def destroy
     @user = Relationship.find(params[:id]).cheqed
     current_user.uncheq!(@user)

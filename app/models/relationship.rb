@@ -1,3 +1,4 @@
+#Relationship model and associated information
 class Relationship < ActiveRecord::Base
   attr_accessible :cheqed_id
   attr_accessible :match
