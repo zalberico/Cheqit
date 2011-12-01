@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
+  #acts_as_xapian :texts => [:name]
+
   has_many :relationships, :foreign_key => "cheqer_id",
                            :dependent => :destroy
   has_many :cheqeds, :through => :relationships
@@ -38,6 +40,14 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
+  #Search attempt
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, :conditions => ['name LIKE ?', search_condition])
+  end
+
+
+
   #Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -59,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def cheq!(cheqed)
-    relationships.create!(:cheqed_id => cheqed.id)
+    relationships.create!(:cheqed_id => cheqed.id, :match => false)
     #user.update_attributes(params[:relationships][:match] => true)
     r = relationships.where(:cheqed_id => id)
     t = r.where(:cheqer_id => cheqed.id)

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update, :cheqeds]
   before_filter :admin_user,   :only => :destroy
 
+  #Search Attempt
+  def search
+    @users = User.search params[:search]
+  end
+
   def index
     @title = "all users"
     @users = User.paginate(:page => params[:page])
