@@ -1,4 +1,5 @@
 class AddSaltToUsers < ActiveRecord::Migration
+  #Salts passwords
   def self.up
     add_column :users, :salt, :string
   end

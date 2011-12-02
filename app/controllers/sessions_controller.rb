@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #Controller for managing user sessions.
   def new
     @title = "sign in"
   end
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #Signs user out
   def destroy
     sign_out
     redirect_to root_path

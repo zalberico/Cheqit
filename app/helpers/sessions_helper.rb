@@ -1,4 +1,6 @@
 module SessionsHelper
+  #Helper for keeping track of user sessions.
+  #Creates and deletes cookies, authenticates user info with salt.
 
   def sign_in(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]

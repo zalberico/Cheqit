@@ -6,6 +6,7 @@ Cheqit::Application.routes.draw do
   end
   get "sessions/new"
 
+  #Routes link and submits to appropriate locations
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :relationships, :only => [:create, :destroy]

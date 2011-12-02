@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  #Defines titles for static pages.
   def home
   end
 

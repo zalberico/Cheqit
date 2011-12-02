@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
-  #acts_as_xapian :texts => [:name]
-
   has_many :relationships, :foreign_key => "cheqer_id",
                            :dependent => :destroy
   has_many :cheqeds, :through => :relationships

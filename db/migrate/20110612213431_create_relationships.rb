@@ -1,4 +1,5 @@
 class CreateRelationships < ActiveRecord::Migration
+  #Creates relationship in DP.
   def self.up
     create_table :relationships do |t|
       t.integer :cheqer_id

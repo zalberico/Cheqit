@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
+  #User actions and variables to be considered for login
   before_filter :authenticate, :except => [:new, :create]
   before_filter :correct_user, :only => [:edit, :update, :cheqeds]
   before_filter :admin_user,   :only => :destroy
 
-  #Search Attempt
+  #Function definitions, understandable by name
   def search
     @users = User.search params[:search]
   end
@@ -67,6 +68,7 @@ class UsersController < ApplicationController
     render 'show_cheq'
   end
 
+  #Definitions of user type
   private
 
     def correct_user
@@ -74,7 +76,7 @@ class UsersController < ApplicationController
       redirect_to(root_path) unless current_user?(@user)
     end
 
-   def admin_user
+    def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
 end
