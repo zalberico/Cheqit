@@ -18,9 +18,6 @@
 			<% end %>
 			<%= yield %>
 		</div>
-		<div id="search">
-    		<%= render :partial => 'users/search' %>
-  		</div>
 		<div id="footer">
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
