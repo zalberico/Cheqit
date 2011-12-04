@@ -60,6 +60,35 @@ body {
 	color: #777;
 }
 
+#home {
+	counter-reset: step;
+}
+
+#home > li:before {
+	position: relative;
+	left: 0;
+	top: 0;
+	font-size: 3em;
+	color: #888;
+	counter-increment: step;
+	content: counter(step) ' ';
+	font-weight: bold;
+}
+
+#home > li {
+	padding: 1em;
+	display: block;
+	width: 234px;
+	float: left;
+	border-right: 1px solid #aaa;
+	line-height: 200%;
+	height: 150px;
+}
+
+#home > li:last-child {
+	border-right: none;
+}
+
 #content {
 	background: #e6e6e6;
 	border-radius: .6em;
@@ -70,31 +99,33 @@ body {
 }
 
 #content > h1 {
-	margin-bottom: 1em;
+	font-size: 1.5em;
+	margin-bottom: .5em;
+	text-align: center;
 }
 
-#content li {
+#content li.user {
 	height: 128px;
 	padding: 1em;
 	list-style: none;
 }
 
-#content li:hover {
+#content li.user:hover {
 	background: #eee;
 }
 
-#content li > img {
+#content li.user > img {
 	float: left;
 	margin-right: 1em;
 }
 
-#content li > a {
+#content li.user > a {
 	text-decoration: none;
 	color: #000;
 	font-size: 1.5em;
 }
 
-#content li > a:hover:after {
+#content li.user > a:hover:after {
 	content: ' ▸ view profile';
 	color: #777;
 	font-size: 1em;
