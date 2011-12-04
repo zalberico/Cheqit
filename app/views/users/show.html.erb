@@ -1,11 +1,7 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user%>
-        <%= @user.name %>
-      </h1>
-      <%= render 'cheq_form' if signed_in?%>
-    </td>
-  </tr>
-</table>
+<% if current_user?(@user) %>
+	<h1>Your profile</h1>
+<% else %>
+	<h1><%= @user.name %>'s profile</h1>
+<% end %>
+<%= gravatar_for @user, :size => 256 %>
+<%= render 'cheq_form' if signed_in?%>
