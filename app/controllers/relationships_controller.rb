@@ -5,13 +5,15 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:relationship][:cheqed_id])
     current_user.cheq!(@user)
-    if(@user.match?(current_user))
-      current_user.match!(@user)
-    end
     @user.match!(current_user)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
+  end
+    if(@user.match?(current_user))
+      current_user.match!(@user)
+      UserMailer.match_email(@user, current_user).deliver
+      UserMailer.match_email(current_user, @user).deliver
     end
   end
 
