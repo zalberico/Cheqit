@@ -96,6 +96,13 @@ body {
 	-webkit-border-radius: .6em;
 	padding: 1em;
 	font-size: 1.5em;
+	position: relative;
+}
+
+form {
+	position: absolute;
+	top: 3em;
+	right: 1em;
 }
 
 #content > h1 {
@@ -129,6 +136,20 @@ body {
 	content: ' ▸ view profile';
 	color: #777;
 	font-size: 1em;
+}
+
+#relationship_submit {
+	width: 150px;
+	height: 40px;
+	font-size: 1em;
+	color: white;
+	border: 0;
+	background: #39b54a;
+	cursor: pointer;
+}
+
+#relationship_submit[value="uncheq"] {
+	background: #0071bc;
 }
 
 #footer {
