@@ -17,6 +17,7 @@
 				<%= content_tag(:div, value, :class => "flash #{key}") %>
 			<% end %>
 			<%= yield %>
+			<div style='clear:both'></div>
 		</div>
 		<div id="footer">
 			<%= render 'layouts/footer' %>
