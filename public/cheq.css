@@ -131,6 +131,20 @@ body {
 	font-size: 1em;
 }
 
+#relationship_submit {
+	width: 150px;
+	height: 40px;
+	font-size: 1em;
+	color: white;
+	border: 0;
+	background: #39b54a;
+	cursor: pointer;
+}
+
+#relationship_submit[value="uncheq"] {
+	background: #0071bc;
+}
+
 #footer {
 	margin-top: 1em;
 	color: #999;
