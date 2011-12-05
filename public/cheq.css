@@ -99,10 +99,16 @@ body {
 	position: relative;
 }
 
-form {
+#content > form {
 	position: absolute;
 	top: 3em;
 	right: 1em;
+}
+
+#content > #new_user {
+	position: relative;
+	top: 0;
+	right: 0;
 }
 
 #content > h1 {
