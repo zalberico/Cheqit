@@ -1,11 +1,31 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user%>
-        <%= @user.name %>
-      </h1>
-      <%= render 'cheq_form' if signed_in?%>
-    </td>
-  </tr>
-</table>
+<% if current_user?(@user) %>
+	<h1>Your profile</h1>
+	<%= gravatar_for @user, :size => 256 %>
+	<a href="http://gravatar.com/emails">change</a>
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>
+		<div class="field">
+			<%= f.label :name %><br />
+			<%= f.text_field :name %>
+		</div>
+		<div class="field">
+			<%= f.label :email %><br />
+			<%= f.text_field :email %>
+		</div>
+		<div class="field">
+			<%= f.label :password %><br />
+			<%= f.password_field :password %>
+		</div>
+		<div class="field">
+			<%= f.label :password_confirmation, "Password (again)" %><br />
+			<%= f.password_field :password_confirmation %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Update" %>
+		</div>
+	<% end %>
+<% else %>
+	<h1><%= @user.name %>'s profile</h1>
+	<%= gravatar_for @user, :size => 256 %>
+	<%= render 'cheq_form' if signed_in?%>
+<% end %>
